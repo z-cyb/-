@@ -57,6 +57,13 @@
                 },
             });
         },
+        created() {
+            // this.$store.commit('edit',{age:15,sex:'男'});
+            this.$store.dispatch('aEdit',{age:15,sex:'男'})
+            console.log(this.$store.state.num)
+            this.$store.commit('a')
+            console.log(this.$store.getters.fullInfo)
+        }
     }
 </script>
 
@@ -64,7 +71,7 @@
 .index-div{
     width: 100%;
     height:31.25rem;
-    border: 1px solid red;
+    /*border: 1px solid red;*/
 }
 /*轮播图*/
 .swiper-container {

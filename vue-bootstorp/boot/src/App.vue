@@ -1,10 +1,27 @@
 <template>
   <div id="app">
       <el-row :gutter="0" >
-        <el-col :xs="8" :sm="6" :md="6" :lg="6" :xl="6"  @click.native="nav(0)" :class="[nav_index===0 ?'active':'bg-purple']"><div class="grid-content">首页</div></el-col>
-        <el-col :xs="8" :sm="6" :md="6" :lg="6" :xl="6"  @click.native="nav(1)" :class="[nav_index===1 ?'active':'bg-purple-light']"><div class="grid-content">产品</div></el-col>
-        <el-col :xs="4" :sm="6" :md="6" :lg="6" :xl="6" @click.native="nav(2)" :class="[nav_index===2 ?'active':'bg-purple']"><div class="grid-content">信息</div></el-col>
-        <el-col :xs="4" :sm="6" :md="6" :lg="6" :xl="6" @click.native="nav(3)" :class="[nav_index===3 ?'active':'bg-purple-light']"> <div class="grid-content">暂定</div></el-col>
+        <el-col :xs="0" :sm="6" :md="6" :lg="6" :xl="6"  @click.native="nav(0)" :class="[nav_index===0 ?'active':'bg-purple']"><div class="grid-content">首页</div></el-col>
+        <el-col :xs="0" :sm="6" :md="6" :lg="6" :xl="6"  @click.native="nav(1)" :class="[nav_index===1 ?'active':'bg-purple-light']"><div class="grid-content">产品</div></el-col>
+        <el-col :xs="0" :sm="6" :md="6" :lg="6" :xl="6" @click.native="nav(2)" :class="[nav_index===2 ?'active':'bg-purple']"><div class="grid-content">信息</div></el-col>
+        <el-col :xs="0" :sm="6" :md="6" :lg="6" :xl="6" @click.native="nav(3)" :class="[nav_index===3 ?'active':'bg-purple-light']"> <div class="grid-content">暂定</div></el-col>
+        <el-col :xs="24" :sm="0" :md="0" :lg="0" :xl="0" class="xs-nav">
+            <div class="grid-content xs-grid-content">Cc</div>
+            <div class="nav-button">
+                        <el-image
+                            class="el-dropdown-link"
+                            :src="url"
+                            fit="fit"
+                        >
+                        </el-image>
+            </div>
+            <el-collapse>
+                <el-collapse-item title="一致性 Consistency" name="1">
+                    <div>与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>
+                    <div>在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。</div>
+                </el-collapse-item>
+            </el-collapse>
+        </el-col>
       </el-row>
       <keep-alive>
           <router-view></router-view>
@@ -16,13 +33,18 @@
     name: 'App',
     data(){
       return{
-        nav_index:0,
+          activeNames: ['1'],
+          nav_index:0,
+          url:require("./assets/images/nav-button.png")
       }
     },
     methods:{
       nav(e){
         this.nav_index=e
-      }
+      },
+        handleChange(val) {
+            console.log(val);
+        }
     }
   }
 </script>
@@ -66,4 +88,29 @@
     font-weight: bold;
     border: 1px solid sandybrown;
   }
+    /*小屏导航*/
+  .xs-nav{
+      background-color: #150c17;
+      display: flex;
+      justify-content: space-around;
+  }
+  .xs-grid-content{
+      width: 30%;
+      color: white;
+      text-align: left;
+  }
+    .nav-button{
+        color: white;
+        display: flex;
+        align-items: center;
+    }
+  .el-image{
+      line-height: 100%;
+      width: 1.875rem;
+      height: 50%;
+    }
+    /*下拉菜单*/
+    .el-dropdown-menu{
+        border: 1px solid red;
+    }
 </style>
