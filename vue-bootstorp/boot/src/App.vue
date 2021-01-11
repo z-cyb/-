@@ -1,30 +1,32 @@
 <template>
   <div id="app">
-      <el-row :gutter="0" >
-        <el-col :xs="0" :sm="6" :md="6" :lg="6" :xl="6"  @click.native="nav(0)" :class="[nav_index===0 ?'active':'bg-purple']"><div class="grid-content">首页</div></el-col>
-        <el-col :xs="0" :sm="6" :md="6" :lg="6" :xl="6"  @click.native="nav(1)" :class="[nav_index===1 ?'active':'bg-purple-light']"><div class="grid-content">产品</div></el-col>
-        <el-col :xs="0" :sm="6" :md="6" :lg="6" :xl="6" @click.native="nav(2)" :class="[nav_index===2 ?'active':'bg-purple']"><div class="grid-content">信息</div></el-col>
-        <el-col :xs="0" :sm="6" :md="6" :lg="6" :xl="6" @click.native="nav(3)" :class="[nav_index===3 ?'active':'bg-purple-light']"> <div class="grid-content">暂定</div></el-col>
+      <el-row :gutter="0"  style="position: fixed; width: 100%">
+        <el-col :xs="0"  hidden-xs-only :sm="6" :md="6" :lg="6" :xl="6"  @click.native="nav(0)" :class="[nav_index===0 ?'active':'bg-purple']"><div class="grid-content">首页</div></el-col>
+        <el-col :xs="0"  hidden-xs-only :sm="6" :md="6" :lg="6" :xl="6"  @click.native="nav(1)" :class="[nav_index===1 ?'active':'bg-purple-light']"><div class="grid-content">产品</div></el-col>
+        <el-col :xs="0" hidden-xs-only :sm="6" :md="6" :lg="6" :xl="6" @click.native="nav(2)" :class="[nav_index===2 ?'active':'bg-purple']"><div class="grid-content">信息</div></el-col>
+        <el-col :xs="0" hidden-xs-only :sm="6" :md="6" :lg="6" :xl="6" @click.native="nav(3)" :class="[nav_index===3 ?'active':'bg-purple-light']"> <div class="grid-content">暂定</div></el-col>
         <el-col :xs="24" :sm="0" :md="0" :lg="0" :xl="0" class="xs-nav">
-            <div class="grid-content xs-grid-content">Cc</div>
+            <div class="grid-content xs-grid-content animate__animated animate__lightSpeedInLeft">Cc</div>
             <div class="nav-button">
-                <el-dropdown>
-                        <el-image
-                                class="el-dropdown-link"
-                                  :src="url"
-                                fit="fit">
-                        </el-image>
-                    <el-dropdown-menu slot="dropdown">
-                        <el-dropdown-item>产品</el-dropdown-item>
-                        <el-dropdown-item>信息</el-dropdown-item>
-                        <el-dropdown-item>暂定</el-dropdown-item>
-                    </el-dropdown-menu>
-                </el-dropdown>
+                <el-image
+                        class="el-dropdown-link animate__animated animate__rotateIn"
+                        :src="url"
+                        fit="fit"
+                        @click="navIcon"
+                >
+                </el-image>
             </div>
         </el-col>
       </el-row>
+      <el-col  :xs="24" :sm="0" :md="0" :lg="0" :xl="0" style="background-color: #150c17">
+          <div v-show="nav_show"  class="nav_drop-down_list animate__animated animate__fadeIn">
+              <div class="nav_show_drop-down_list">信息介绍</div>
+              <div class="nav_show_drop-down_list">案列详情</div>
+              <div class="nav_show_drop-down_list">敬请期待</div>
+          </div>
+      </el-col>
       <keep-alive>
-          <router-view></router-view>
+          <router-view style="margin-top: 3.15rem"></router-view>
       </keep-alive>
     </div>
 </template>
@@ -34,13 +36,22 @@
     data(){
       return{
         nav_index:0,
-          url:require("./assets/images/nav-button.png")
+        url:require("./assets/images/nav-button.png"),
+        nav_show:false
       }
     },
     methods:{
       nav(e){
         this.nav_index=e
-      }
+      },
+        navIcon(){
+          this.nav_show=!this.nav_show
+            if(this.nav_show !=false){
+                this.url=require("./assets/images/xiala.png")
+            }else {
+                this.url=require("./assets/images/nav-button.png")
+            }
+        }
     }
   }
 </script>
@@ -49,6 +60,10 @@
     font-size: 16px;
     margin: 0;
     padding: 0;
+  }
+  .el-row{
+      top: 0;
+      z-index: 100;
   }
   .nav{
     width: 100%;
@@ -106,7 +121,16 @@
       height: 50%;
     }
     /*下拉菜单*/
-    .el-dropdown-menu{
-        border: 1px solid red;
+   .nav_drop-down_list{
+       background-color: #150c17;
+       color: white;
+   }
+    .nav_show_drop-down_list{
+       padding: 0.625rem;
+        margin-left: 30px;
     }
+  .nav_show_drop-down_list:hover{
+      color: sandybrown;
+  }
+
 </style>

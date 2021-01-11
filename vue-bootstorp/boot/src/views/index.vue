@@ -29,19 +29,37 @@
             </div>
             <div class="swiper-pagination"></div>
         </div>
+        <div class="as wow animate__animated animate__zoomInRight">123</div>
+        <div class="as wow animate__animated animate__fadeOutRightBig">123</div>
+        <div class="as wow animate__animated animate__zoomInRight">123</div>
+        <div class="as wow animate__animated animate__bounceInUp">123</div>
+        <div class="as wow animate__animated animate__rotateInUpLeft:">123</div>
+        <div class="as wow animate__animated animate__zoomInRight" >123</div>
+        <div class="as wow animate__animated animate__zoomInRight">123</div>
+        <div class="as wow animate__animated animate__flipInX">123</div>
+        <div class="as wow animate__animated animate__zoomInRight">123</div>
+        <div class="as wow animate__animated animate__bounce">123</div>
+        <div class="as wow animate__animated animate__rotateIn">123</div>
+        <div class="aswow animate__animated animate__zoomInRight">123</div>
+        <div class="as wow animate__animated animate__pulse">123</div>
+        <div class="as wow animate__animated animate__ shake">123</div>
+        <div class="as wow animate__animated animate__rubberBand">123</div>
     </div>
 </template>
 
 <script>
     import Swiper from 'swiper'
     import "swiper/dist/css/swiper.min.css";
+    import {WOW} from 'wowjs'
     export default {
         name: "index",
         data(){
             return{
+                on:false
             }
         },
         mounted() {
+            new WOW().init();
              new Swiper('.swiper-container', {
                 speed: 600,
                 parallax: true,
@@ -63,6 +81,16 @@
             console.log(this.$store.state.num)
             this.$store.commit('a')
             console.log(this.$store.getters.fullInfo)
+        },
+        watch: {
+            cases() {
+                this.$nextTick(() => { // 不加这块也能实现效果，不知道是什么用处
+                    var wow = new WOW({
+                        live: false
+                    })
+                    wow.init()
+                })
+            }
         }
     }
 </script>
@@ -118,4 +146,9 @@
     background-color: red;
     opacity: 1;
 }
+    .as{
+        width: 300px;
+        height: 50px;
+        border: 1px solid red;
+    }
 </style>
