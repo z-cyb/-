@@ -8,19 +8,19 @@
         <el-col :xs="24" :sm="0" :md="0" :lg="0" :xl="0" class="xs-nav">
             <div class="grid-content xs-grid-content">Cc</div>
             <div class="nav-button">
+                <el-dropdown>
                         <el-image
-                            class="el-dropdown-link"
-                            :src="url"
-                            fit="fit"
-                        >
+                                class="el-dropdown-link"
+                                  :src="url"
+                                fit="fit">
                         </el-image>
+                    <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item>产品</el-dropdown-item>
+                        <el-dropdown-item>信息</el-dropdown-item>
+                        <el-dropdown-item>暂定</el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>
             </div>
-            <el-collapse>
-                <el-collapse-item title="一致性 Consistency" name="1">
-                    <div>与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>
-                    <div>在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。</div>
-                </el-collapse-item>
-            </el-collapse>
         </el-col>
       </el-row>
       <keep-alive>
@@ -33,18 +33,14 @@
     name: 'App',
     data(){
       return{
-          activeNames: ['1'],
-          nav_index:0,
+        nav_index:0,
           url:require("./assets/images/nav-button.png")
       }
     },
     methods:{
       nav(e){
         this.nav_index=e
-      },
-        handleChange(val) {
-            console.log(val);
-        }
+      }
     }
   }
 </script>
