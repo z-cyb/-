@@ -9,4 +9,7 @@
         height:25rem;
         /*border: 1px solid red;*/
     }
+    .content-div{
+        height: 10px;
+    }
 }

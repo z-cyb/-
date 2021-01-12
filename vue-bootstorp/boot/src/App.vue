@@ -18,13 +18,15 @@
             </div>
         </el-col>
       </el-row>
-      <el-col  :xs="24" :sm="0" :md="0" :lg="0" :xl="0" style="background-color: #150c17">
-          <div v-show="nav_show"  class="nav_drop-down_list animate__animated animate__fadeIn">
-              <div class="nav_show_drop-down_list">信息介绍</div>
-              <div class="nav_show_drop-down_list">案列详情</div>
-              <div class="nav_show_drop-down_list">敬请期待</div>
-          </div>
-      </el-col>
+          <el-col  :xs="24" :sm="0" :md="0" :lg="0" :xl="0" style="background-color: #150c17;position: absolute;z-index: 100;">
+              <el-collapse-transition>
+                  <div v-show="nav_show"  class="nav_drop-down_list animate__animated animate__bounceInLeft">
+                      <div class="nav_show_drop-down_list">信息介绍</div>
+                      <div class="nav_show_drop-down_list">案列详情</div>
+                      <div class="nav_show_drop-down_list">敬请期待</div>
+                  </div>
+              </el-collapse-transition>
+          </el-col>
       <keep-alive>
           <router-view style="margin-top: 3.15rem"></router-view>
       </keep-alive>

@@ -29,21 +29,26 @@
             </div>
             <div class="swiper-pagination"></div>
         </div>
-        <div class="as wow animate__animated animate__zoomInRight">123</div>
-        <div class="as wow animate__animated animate__fadeOutRightBig">123</div>
-        <div class="as wow animate__animated animate__zoomInRight">123</div>
-        <div class="as wow animate__animated animate__bounceInUp">123</div>
-        <div class="as wow animate__animated animate__rotateInUpLeft:">123</div>
-        <div class="as wow animate__animated animate__zoomInRight" >123</div>
-        <div class="as wow animate__animated animate__zoomInRight">123</div>
-        <div class="as wow animate__animated animate__flipInX">123</div>
-        <div class="as wow animate__animated animate__zoomInRight">123</div>
-        <div class="as wow animate__animated animate__bounce">123</div>
-        <div class="as wow animate__animated animate__rotateIn">123</div>
-        <div class="aswow animate__animated animate__zoomInRight">123</div>
-        <div class="as wow animate__animated animate__pulse">123</div>
-        <div class="as wow animate__animated animate__ shake">123</div>
-        <div class="as wow animate__animated animate__rubberBand">123</div>
+        <div>
+            <el-divider><span style="font-size: 1.875rem">Cc</span></el-divider>
+        </div>
+        <el-row class="content-el-row">
+            <el-col :sm="6" :md="6" :lg="6" :xs="6" :xl="6" :offset="6" class="content-div wow animate__animated animate__bounceInLeft">
+                暂定
+            </el-col>
+            <el-col :sm="6" :md="6" :lg="6" :xs="6" :xl="6" class="content-div wow animate__animated animate__bounceInRight">
+                暂定
+            </el-col>
+        </el-row>
+        <el-row class="content-el-row">
+            <el-col :sm="6" :md="6" :lg="6" :xs="6" :xl="6" :offset="6" class="content-div wow animate__animated animate__bounceInLeft">
+                暂定
+            </el-col>
+            <el-col :sm="6" :md="6" :lg="6" :xs="6" :xl="6" class="content-div wow animate__animated animate__bounceInRight">
+                暂定
+            </el-col>
+        </el-row>
+        <foot></foot>
     </div>
 </template>
 
@@ -51,11 +56,16 @@
     import Swiper from 'swiper'
     import "swiper/dist/css/swiper.min.css";
     import {WOW} from 'wowjs'
+    import foot from "../components/footer"
     export default {
         name: "index",
+        components:{
+            foot
+        },
         data(){
             return{
-                on:false
+                on:false,
+                currentDate: new Date()
             }
         },
         mounted() {
@@ -146,9 +156,16 @@
     background-color: red;
     opacity: 1;
 }
-    .as{
-        width: 300px;
-        height: 50px;
+    /*内容*/
+.content-el-row{
+    height: 50%;
+}
+    .content-div{
+        height: 100%;
         border: 1px solid red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
+    /*卡片*/
 </style>
