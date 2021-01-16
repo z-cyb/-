@@ -17,8 +17,7 @@
                 </el-image>
             </div>
         </el-col>
-      </el-row>
-          <el-col  :xs="24" :sm="0" :md="0" :lg="0" :xl="0" style="background-color: #150c17;position: absolute;z-index: 100;">
+          <el-col  :xs="24" :sm="0" :md="0" :lg="0" :xl="0" style="background-color: #150c17;">
               <el-collapse-transition>
                   <div v-show="nav_show"  class="nav_drop-down_list animate__animated animate__bounceInLeft">
                       <div class="nav_show_drop-down_list">信息介绍</div>
@@ -27,14 +26,20 @@
                   </div>
               </el-collapse-transition>
           </el-col>
+      </el-row>
       <keep-alive>
           <router-view style="margin-top: 3.15rem"></router-view>
       </keep-alive>
+      <foot></foot>
     </div>
 </template>
 <script>
+    import foot from "./components/footer"
   export default {
     name: 'App',
+      components:{
+        foot
+      },
     data(){
       return{
         nav_index:0,
